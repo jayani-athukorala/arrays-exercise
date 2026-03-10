@@ -23,7 +23,7 @@ public class Main {
         //Exercise 4:
         int[] firstArray = {1, 15, 20, 35};
         IO.println(String.format("Elements from first array: %s \n" +
-                        "Elements from first array: %s",
+                        "Elements from second array: %s",
                 Arrays.toString(firstArray), Arrays.toString(copyElementsInArray(firstArray))));
 
         //Exercise 5:
@@ -34,6 +34,29 @@ public class Main {
         int[] numbers = { 43, 5, 23, 17, 2, 14};
         double average = findAverage(numbers);
         IO.println("Average is : "+ average);
+
+        //Exercise 7:
+        int[] numbersArray = {1, 2, 4,7, 9, 12};
+        IO.println(String.format("Array : %s\nOdd Array : %s",
+                Arrays.toString(numbersArray), Arrays.toString(findOddNumbersArray(numbersArray))));
+
+        //Exercise 8:
+        int[] numbersArray2 ={20, 20, 40, 20, 30, 40, 50, 60, 50};
+        IO.println(String.format("Array : %s\nDistinct Array : %s",
+                Arrays.toString(numbersArray2), Arrays.toString(removeDuplicates(numbersArray2))));
+
+        //Exercise 9:
+
+
+        //Exercise 10:
+        int[] multipliers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        int[][] multiplicationTable = createMultiplicationTable(multipliers);
+        for (int[] row : multiplicationTable) {
+            for (int num : row) {
+                IO.print(num+"\t");
+            }
+            IO.println();
+        }
     }
 
     // This method stores elements in an array of type int and print it out.
@@ -88,11 +111,46 @@ public class Main {
         return twoDArray;
     }
 
+    //This method returns the average of int array
+    // Expected output: Average is: 17.3
     static double findAverage(int[] numbers){
         int sum = 0;
         for (int number : numbers) {
             sum = sum + number;
         }
         return (double) sum / numbers.length;
+    }
+
+    //This method will filter the uneven numbers from array based on condition.
+    //Example:
+    //Array: 1 2 4 7 9 12
+    //Odd Array: 1 7 9
+    static int[] findOddNumbersArray(int[] numbersArray){
+        return Arrays.stream(numbersArray)
+                .filter(n -> n % 2 != 0)
+                .toArray();
+    }
+
+    //This method remove the duplicate elements of a given array [20, 20, 40, 20, 30, 40, 50, 60, 50].
+    //Expected output:
+    //Array: 20 20 40 20 30 40 50 60 50
+    //Array without duplicates: 20 40 30 50 60
+    static int[] removeDuplicates(int[] numbersArray){
+        return Arrays.stream(numbersArray)
+                .distinct()
+                .toArray();
+    }
+
+    //This method will return multiplication table, stored in multidimensional array
+    static int[][] createMultiplicationTable(int[] multipliers){
+        int[][] multiplicationTable = new int[10][10];
+
+        for (int row = 0; row< multipliers.length; row++){
+            for (int column = 0; column<multipliers.length;column++){
+                multiplicationTable[row][column] = (row+1)*(column+1);
+            }
+        }
+
+        return multiplicationTable;
     }
 }
