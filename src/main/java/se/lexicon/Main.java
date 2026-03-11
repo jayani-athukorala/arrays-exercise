@@ -47,7 +47,7 @@ public class Main {
         IO.println("Exercise 6: Print the average of 6 numbers holds in an array");
         int[] numbers = { 43, 5, 23, 17, 2, 14};
         double average = findAverage(numbers);
-        IO.println("Average is : "+ average);
+        IO.println(String.format("Average is : %.2f", average));
         IO.println("----------------------------------------\n");
 
         //Exercise 7:
@@ -91,9 +91,10 @@ public class Main {
         IO.println("----------------------------------------\n");
 
         //Exercise 12:
-        IO.println("Exercise 12: Copy random numbers from arraylist1 to arraylist2 in a way that,\n" +
-                " the even numbers are located in the rear (the right side) part of the array \n" +
-                "and the odd numbers are located in the front part (the left side)");
+        IO.println("""
+                Exercise 12: Copy random numbers from arraylist1 to arraylist2 in a way that,
+                the even numbers are located in the rear (the right side) part of the array\s
+                and the odd numbers are located in the front part (the left side)""");
         copyArrayLists();
         IO.println("==============Bye Bye!===================");
     }
@@ -252,5 +253,4 @@ public class Main {
         IO.println(list1);
         IO.println(list2);
     }
-
 }
